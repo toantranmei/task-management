@@ -2,12 +2,14 @@
 const router = require('express-promise-router')()
 const ProjectsController = require('../controllers/project.controller')
 
+const { validateParam, validateBody, schemas } = require('../helpers/routeHelpers')
+
 router.route('/')
   .get(ProjectsController.index)
-  .post(ProjectsController.newProject)
+  .post(validateBody(schemas.projectSchema), ProjectsController.newProject)
 
 router.route('/:projectId')
-  .get(ProjectsController.getProject)
+  .get(validateParam(schemas.idSchema, 'projectId'), ProjectsController.getProject)
   .put(ProjectsController.replaceProject)
   .patch(ProjectsController.updateProject)
 

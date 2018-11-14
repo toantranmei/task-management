@@ -14,7 +14,7 @@ module.exports = {
   },
 
   getProject: async (req, res, next) => {
-    const { projectId } = req.params
+    const { projectId } = req.value.params
     const project = await Project.findById(projectId)
     res.status(200).json(project)
   },

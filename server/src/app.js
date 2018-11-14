@@ -15,14 +15,15 @@ app.use(cors())
 mongoose.Promise = global.Promise
 
 // Connect to DB
-mongoose.connect(
-  'mongodb+srv://admin:' +
-  config.MONGO_ATLAS_PW +
-  '@rest-ytb-3lcnj.mongodb.net/test?retryWrites=true',
-  {
-    useNewUrlParser: true
-  }
-)
+// mongoose.connect(
+//   'mongodb+srv://admin:' +
+//   config.MONGO_ATLAS_PW +
+//   '@rest-ytb-3lcnj.mongodb.net/test?retryWrites=true',
+//   {
+//     useNewUrlParser: true
+//   }
+// )
+mongoose.connect('mongodb://localhost:27017/taskmongodb', { useNewUrlParser: true })
 
 /****************************************************
 *Define Routes middleware, while pass data to client
