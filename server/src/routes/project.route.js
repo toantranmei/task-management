@@ -10,12 +10,12 @@ router.route('/')
 
 router.route('/:projectId')
   .get(validateParam(schemas.idSchema, 'projectId'), ProjectsController.getProject)
-  .put(ProjectsController.replaceProject)
-  .patch(ProjectsController.updateProject)
+  .put([validateParam(schemas.idSchema, 'projectId'), validateBody(schemas.projectSchema)], ProjectsController.replaceProject)
+  .patch([validateParam(schemas.idSchema, 'projectId'), validateBody(schemas.projectOptionalSchema)], ProjectsController.updateProject)
 
 router.route('/:projectId/tasks')
-  .get(ProjectsController.getProjectTask)
-  .post(ProjectsController.newProjectTask)
+  .get(validateParam(schemas.idSchema, 'projectId'), ProjectsController.getProjectTask)
+  .post([validateParam(schemas.idSchema, 'projectId'), validateBody(schemas.taskSchema)], ProjectsController.newProjectTask)
 
 // Export module
 module.exports = router

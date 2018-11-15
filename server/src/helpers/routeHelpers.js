@@ -43,6 +43,18 @@ module.exports = {
     projectSchema: Joi.object().keys({
       nameProject: Joi.string().required(),
       descProject: Joi.string().required()
+    }),
+    projectOptionalSchema: Joi.object().keys({
+      nameProject: Joi.string(),
+      descProject: Joi.string()
+    }),
+    taskSchema: Joi.object().keys({
+      nameTask: Joi.string().required(),
+      descTask: Joi.string().required()
+    }),
+    taskOptionalSchema: Joi.object().keys({
+      nameTask: Joi.string(),
+      descTask: Joi.string()
     })
   }
 }

@@ -5,9 +5,10 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const config = require('./configs/config')
 const projects = require('./routes/project.route')
+const users = require('./routes/user.route')
 
 const app = express()
-app.use(morgan('dev'))
+app.use(morgan('tiny'))
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -29,6 +30,7 @@ mongoose.connect('mongodb://localhost:27017/taskmongodb', { useNewUrlParser: tru
 *Define Routes middleware, while pass data to client
 ****************************************************/
 app.use('/projects', projects)
+app.use('/users', users)
 /***************************************************/
 
 // Catch 404 Errors and forward them to error handler
