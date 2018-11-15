@@ -106,8 +106,8 @@ export default {
   data() {
     return {
       images: {
-        background: require('@/assets/plugins/images/big/auth-bg.jpg'),
-        headerform: require('@/assets/plugins/images/logo-icon.png')
+        background: require('@/assets/images/big/auth-bg.jpg'),
+        headerform: require('@/assets/images/logo-icon.png')
       },
       emailUser: '',
       password: '',

@@ -1,9 +1,10 @@
 import Api from '@/services/Api'
 
 export default {
-  index (projects) {
-    return Api().get('projects', {
-      params: projects
-    })
+  index () {
+    return Api().get('projects')
+  },
+  newProject (project) {
+    return Api().post('projects', project)
   }
 }
