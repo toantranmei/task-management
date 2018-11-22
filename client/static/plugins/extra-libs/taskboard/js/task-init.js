@@ -1,13 +1,11 @@
 $(function() {
-    /**
-     * Created by Zura on 4/5/2016.
-     */
     $(function() {
         Lobibox.notify.DEFAULTS = $.extend({}, Lobibox.notify.DEFAULTS, {
             size: 'mini',
             // delay: false,
             position: 'right top'
         });
+
         //Custom datepicker
         $('#todo-lists-demo-datepicker').lobiList({
             lists: [{
@@ -179,7 +177,11 @@ $(function() {
             lists: [{
                     title: 'Todo',
                     defaultStyle: 'lobilist-info',
-                    items: []
+                    items: [{
+                        title: 'Floor cool cinders',
+                        description: 'Thunder fulfilled travellers folly, wading, lake.',
+                        dueDate: '2018-12-12'
+                    }]
                 }
             ]
         });

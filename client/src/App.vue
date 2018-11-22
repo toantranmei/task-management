@@ -1,42 +1,14 @@
 <template>
   <div id="app">
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <pre-loader />
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <topbar />
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <sidebar />
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <router-view></router-view>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
+        <topbar/>
+        <sidebar/>
+        <div class="page-wrapper">
+          <bread-crumb/>
+          <router-view/>
+          <page-footer/>
+        </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <div class="chat-windows"></div>
   </div>
 </template>
 
@@ -44,12 +16,16 @@
 import PreLoader from '@/components/layouts/PreLoader'
 import Sidebar from '@/components/layouts/Sidebar'
 import Topbar from '@/components/layouts/Header'
+import BreadCrumb from '@/components/layouts/BreadCrumb'
+import PageFooter from '@/components/layouts/Footer'
 export default {
   name: 'App',
   components: {
-    'pre-loader': PreLoader, 
-    'sidebar': Sidebar,
-    'topbar': Topbar
+    PreLoader, 
+    Sidebar, 
+    Topbar,
+    BreadCrumb,
+    PageFooter
   }
 }
 </script>

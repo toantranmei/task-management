@@ -39,7 +39,10 @@
                     </li>
                     <!-- User Profile-->
                     <li class="sidebar-item">
-                        <router-link :to="{ name: 'main' }" tag="a" class="sidebar-link waves-effect waves-dark">
+                        <router-link 
+                            :to="{ name: 'main' }" 
+                            tag="a" 
+                            class="sidebar-link waves-effect waves-dark">
                             <i class="icon-Car-Wheel"></i>
                             <span>Bảng điều khiển </span>
                         </router-link>
@@ -50,7 +53,10 @@
                         <span class="hide-menu">Cá nhân</span>
                     </li>
                     <li class="sidebar-item">
-                        <router-link :to="{ name: 'tasks' }" tag="a" class="sidebar-link waves-effect waves-dark">
+                        <router-link 
+                            :to="{ name: 'tasks' }" 
+                            tag="a" 
+                            class="sidebar-link waves-effect waves-dark">
                             <i class="icon-Ticket"></i>
                             <span>Quản lý công việc </span>
                         </router-link>
