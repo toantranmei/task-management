@@ -1,7 +1,4 @@
 <template>
-    <!-- ============================================================== -->
-    <!-- Login box.scss -->
-    <!-- ============================================================== -->
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" v-bind:style="{ background: 'url(' + images.background + ') no-repeat center center' }">
         <div class="auth-box">
             <div id="loginform">
@@ -95,9 +92,6 @@
             </div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Login box.scss -->
-    <!-- ============================================================== -->
 </template>
 
 <script>

@@ -4,9 +4,6 @@ const jwt = require('jsonwebtoken')
 const configs = require('../configs/config')
 
 module.exports = {
-  index: async (req, res, next) => {
-
-  },
   /* SIGN UP A NEW USER */
   newUser: (req, res, next) => {
     User.find({ emailUser: req.body.emailUser })
@@ -89,7 +86,7 @@ module.exports = {
   /* DELETED A NEW USER */
   removeUser: (req, res, next) => {
     const { userId } = req.params
-    User.remove(userId)
+    User.findByIdAndRemove(userId)
       .then(result => {
         res.status(200).json({
           message: 'User deleted!',
@@ -101,5 +98,47 @@ module.exports = {
           error: err
         })
       })
+  },
+  /* GET ALL USERS */
+  getAllUsers: async (req, res, next) => {
+    const users = await User.find({})
+    res.status(200).json(users)
+  },
+  /* GET USER BY ID */
+  getUserById: async (req, res, next) => {
+    const { userId } = req.params
+    const user = await User.findById(userId)
+    res.status(200).json(user)
+  },
+  /* UPDATE USER */
+  updateUser: (req, res, next) => {
+    User.find({ emailUser: req.body.emailUser })
+      .exec()
+      .then(user => {
+        if (user.length >= 1) {
+          return res.status(409).json({
+            message: 'Email exists!'
+          })
+        } else {
+          const { userId } = req.params
+          const newUser = req.body
+          User.findByIdAndUpdate(userId, newUser)
+            .then(result => {
+              res.status(201).json({
+                message: 'User Updated',
+                data: result
+              })
+            })
+            .catch(err => {
+              res.status(500).json({
+                error: err
+              })
+            })
+        }
+      })
+  },
+  /* LOGOUT USER */
+  logoutUser: (req, res, next) => {
+
   }
 }

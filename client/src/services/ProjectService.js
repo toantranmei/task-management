@@ -6,5 +6,8 @@ export default {
   },
   newProject (project) {
     return Api().post('projects', project)
+  },
+  show (projectId) {
+    return Api().get(`projects/${projectId}`)
   }
 }

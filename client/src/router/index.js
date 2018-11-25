@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main'
-import Register from '@/components/Register'
-import Login from '@/components/Login'
+import Dashboard from '@/components/dashboard/Index'
+import Register from '@/components/authenticate/Register'
+import Login from '@/components/authenticate/Login'
 import Task from '@/components/tasks/Index'
 import Project from '@/components/projects/Index'
+import ViewProject from '@/components/projects/ViewProject'
 import Email from '@/components/email/Index'
 import Group from '@/components/groups/Index'
-import Setting from '@/components/Setting'
+import Setting from '@/components/settings/Index'
+
 
 Vue.use(Router)
 
@@ -15,8 +17,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'main',
-      component: Main
+      name: 'dashboard',
+      component: Dashboard
     },
     {
       path: '/tasks',
@@ -27,6 +29,11 @@ export default new Router({
       path: '/projects',
       name: 'projects',
       component: Project
+    },
+    {
+      path: '/projects/:projectId',
+      name: 'project',
+      component: ViewProject
     },
     {
       path: '/signup',

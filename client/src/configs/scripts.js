@@ -11,5 +11,10 @@ module.exports = {
 		const configInit = document.createElement('script')
     configInit.setAttribute('src', 'static/plugins/extra-libs/taskboard/js/task-init.js')
     document.head.appendChild(configInit)
-	}
+  },
+  renderProjectScripts: () => {
+    const customjs = document.createElement('script')
+    customjs.setAttribute('src', 'static/dist/js/custom.min.js')
+    document.head.appendChild(customjs)
+  }
 }

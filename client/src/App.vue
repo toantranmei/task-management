@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div id="main-wrapper">
-        <topbar/>
-        <sidebar/>
-        <div class="page-wrapper">
-          <bread-crumb/>
+        <topbar v-if="!hide" />
+        <sidebar v-if="!hide" />
+        <div v-bind:class="!hide ? 'page-wrapper' : ''">
+          <bread-crumb v-if="!hide" />
           <router-view/>
-          <page-footer/>
+          <page-footer v-if="!hide"/>
         </div>
     </div>
   </div>
@@ -26,6 +26,11 @@ export default {
     Topbar,
     BreadCrumb,
     PageFooter
+  },
+  computed: {
+    hide () {
+      return this.$route.path === '/login' || this.$route.path === '/signup'
+    }
   }
 }
 </script>

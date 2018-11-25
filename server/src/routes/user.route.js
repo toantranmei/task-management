@@ -2,13 +2,16 @@
 const router = require('express-promise-router')()
 const UserController = require('../controllers/user.controller')
 
-// const { validateParam, validateBody, schemas } = require('../helpers/routeHelpers')
-
 router.route('/signup')
   .post(UserController.newUser)
 
+router.route('/')
+  .get(UserController.getAllUsers)
+
 router.route('/:userId')
   .delete(UserController.removeUser)
+  .get(UserController.getUserById)
+  .patch(UserController.updateUser)
 
 router.route('/login')
   .post(UserController.loginUser)

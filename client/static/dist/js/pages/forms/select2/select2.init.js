@@ -1,8 +1,8 @@
 /*************************************************************************************/
-// -->Template Name: Bootstrap Press Admin
-// -->Author: Themedesigner
-// -->Email: niravjoshi87@gmail.com
-// -->File: c3_chart_JS
+// -->Template Name: Dashboard RHP Team
+// -->Author: SKy Albert
+// -->Email: trantoan.fox.97@gmail.com
+// -->File: SELECT2.INIT.JS
 /*************************************************************************************/
 
 //***********************************//

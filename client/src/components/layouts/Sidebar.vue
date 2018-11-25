@@ -44,7 +44,7 @@
                             tag="a" 
                             class="sidebar-link waves-effect waves-dark">
                             <i class="icon-Car-Wheel"></i>
-                            <span>Bảng điều khiển </span>
+                            <span class="hide-menu">Bảng điều khiển </span>
                         </router-link>
                     </li>
 
@@ -58,13 +58,13 @@
                             tag="a" 
                             class="sidebar-link waves-effect waves-dark">
                             <i class="icon-Ticket"></i>
-                            <span>Quản lý công việc </span>
+                            <span class="hide-menu">Quản lý công việc </span>
                         </router-link>
                     </li>
                     <li class="sidebar-item">
                         <router-link :to="{ name: 'email' }" tag="a" class="sidebar-link waves-effect waves-dark">
                             <i class="icon-Mailbox-Empty"></i>
-                            <span>Hòm thư điện tử </span>
+                            <span class="hide-menu">Hòm thư điện tử </span>
                         </router-link>
                     </li>
                     <li class="nav-small-cap">
@@ -79,8 +79,8 @@
                     </li>
                     <li class="sidebar-item">
                         <router-link :to="{ name: 'groups' }" tag="a" class="sidebar-link waves-effect waves-dark">
-                            <i class="icon-Mailbox-Empty"></i>
-                            <span>Nhóm </span>
+                            <i class="icon-Global-Position"></i>
+                            <span class="hide-menu">Nhóm </span>
                         </router-link>
                     </li>
                     <li class="nav-small-cap">

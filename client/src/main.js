@@ -8,6 +8,8 @@ import store from '@/store/store'
 
 Vue.config.productionTip = false
 
+export const bus = new Vue();
+
 
 sync(store, router)
 
