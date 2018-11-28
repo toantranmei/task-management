@@ -239,28 +239,26 @@
                                     <p class=" m-b-0">varun@gmail.com</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="ti-user m-r-5 m-l-5"></i> Trang cá nhân</a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="ti-email m-r-5 m-l-5"></i> Hòm thư điện tử</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="ti-settings m-r-5 m-l-5"></i> Thiết lập tài khoản</a>
+                            <router-link
+                              tag="a"
+                              class="dropdown-item"
+                              :to="{ name: 'user' }"><i class="ti-user m-r-5 m-l-5"></i> Trang cá nhân</router-link>
+                            <router-link
+                              tag="a"
+                              class="dropdown-item"
+                              :to="{ name: 'user' }"><i class="ti-email m-r-5 m-l-5"></i> Hòm thư điện tử</router-link>
+                            <router-link
+                              tag="a"
+                              class="dropdown-item"
+                              :to="{ name: 'user' }"><i class="ti-settings m-r-5 m-l-5"></i> Cài đặt</router-link>
                             <div class="dropdown-divider"></div>
                             <a 
                               class="dropdown-item" 
                               href="javascript:void(0)"
                               @click="logout">
                                 <i class="fa fa-power-off m-r-5 m-l-5"></i> Đăng xuất</a>
-                            <div class="dropdown-divider"></div>
-                            <div class="p-l-30 p-10">
-                                <a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">Xem hồ sơ</a>
-                            </div>
                         </div>
                     </li>
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
                 </ul>
             </div>
         </nav>

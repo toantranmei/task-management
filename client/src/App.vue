@@ -33,16 +33,6 @@ export default {
     }
   },
   created () {
-    const openRoutes = ['login', 'signup']
-    this.$router.beforeEach((to, from, next) => {
-      if (openRoutes.includes(to.name)) {
-        next()
-      } else if (this.$store.state.isUserLoggedIn == true) {
-        next()
-      } else {
-        next('/login')
-      }
-    })
   }
 }
 </script>
