@@ -247,7 +247,10 @@
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="ti-settings m-r-5 m-l-5"></i> Thiết lập tài khoản</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)">
+                            <a 
+                              class="dropdown-item" 
+                              href="javascript:void(0)"
+                              @click="logout">
                                 <i class="fa fa-power-off m-r-5 m-l-5"></i> Đăng xuất</a>
                             <div class="dropdown-divider"></div>
                             <div class="p-l-30 p-10">
@@ -266,17 +269,26 @@
 
 <script>
 export default {
-    data () {
-        return {
-            images: {
-                darklogo: require('@/assets/images/logo-icon.png'),
-                lightlogo: require('@/assets/images/logo-light-icon.png'),
-                darktext: require('@/assets/images/logo-text.png'),
-                lighttext: require('@/assets/images/logo-light-text.png'),
-                userImage: require('@/assets/images/users/1.jpg') 
-            }
-        }
+  data () {
+      return {
+          images: {
+              darklogo: require('@/assets/images/logo-icon.png'),
+              lightlogo: require('@/assets/images/logo-light-icon.png'),
+              darktext: require('@/assets/images/logo-text.png'),
+              lighttext: require('@/assets/images/logo-light-text.png'),
+              userImage: require('@/assets/images/users/1.jpg') 
+          }
+      }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'login'
+      })
     }
+  }
 }
 </script>
 

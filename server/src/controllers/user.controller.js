@@ -11,7 +11,7 @@ module.exports = {
       .then(user => {
         if (user.length >= 1) {
           return res.status(409).json({
-            message: 'Email exists!'
+            error: 'Email exists!'
           })
         } else {
           bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -27,10 +27,16 @@ module.exports = {
               })
               newUser
                 .save()
-                .then(result => {
+                .then(user => {
+                  const token = jwt.sign({
+                    emailUser: user.emailUser,
+                    userId: user._id
+                  }, configs.JWT_KEY, {
+                    expiresIn: '1h'
+                  })
                   res.status(201).json({
-                    message: 'User Created',
-                    data: result
+                    user: user,
+                    token: token
                   })
                 })
                 .catch(err => {
@@ -50,13 +56,13 @@ module.exports = {
       .then(user => {
         if (user.length < 1) {
           return res.status(401).json({
-            message: 'Account is not exists!'
+            error: 'Account is not exists!'
           })
         }
         bcrypt.compare(req.body.password, user[0].password, (err, result) => {
           if (err) {
             return res.status(401).json({
-              message: 'Password hash wrong!'
+              error: 'The login information was incorrect!!'
             })
           }
           if (result) {
@@ -73,7 +79,7 @@ module.exports = {
             })
           }
           res.status(401).json({
-            message: 'The login information was incorrect!'
+            error: 'Password is not correctly!'
           })
         })
       })

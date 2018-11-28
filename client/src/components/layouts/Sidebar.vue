@@ -30,7 +30,10 @@
                                     <a class="dropdown-item" href="javascript:void(0)">
                                         <i class="ti-settings m-r-5 m-l-5"></i> Thiết lập tài khoản</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)">
+                                    <a 
+                                      class="dropdown-item" 
+                                      href="javascript:void(0)"
+                                      @click="logout">
                                         <i class="fa fa-power-off m-r-5 m-l-5"></i> Đăng xuất</a>
                                 </div>
                             </div>
@@ -112,6 +115,15 @@ export default {
         lighttext: require('@/assets/images/logo-light-text.png'),
         userImage: require('@/assets/images/users/1.jpg') 
       }
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'login'
+      })
     }
   }    
 }

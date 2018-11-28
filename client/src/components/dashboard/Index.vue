@@ -1,10 +1,11 @@
 <template>
 <div class="container-fluid">
-  
+  <user-dashboard/>
 </div>
 </template>
 
 <script>
+import UserDashboard from '@/components/dashboard/UserDashboard'
 export default {
   data () {
     return {
@@ -16,6 +17,9 @@ export default {
         userImage: require('@/assets/images/users/1.jpg') 
       }
     }
+  },
+  components: {
+    UserDashboard
   }
 }
 </script>

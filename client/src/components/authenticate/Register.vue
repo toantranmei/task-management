@@ -1,7 +1,4 @@
 <template>
-  <!-- ============================================================== -->
-  <!-- Login box.scss -->
-  <!-- ============================================================== -->
   <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" v-bind:style="{ background: 'url(' + images.background + ') no-repeat center center' }">
       <div class="auth-box">
           <div>
@@ -12,7 +9,16 @@
               <!-- Form -->
               <div class="row">
                   <div class="col-12">
-                      <form class="form-horizontal m-t-20">
+                      <div class="alert alert-danger" v-if="errors.length">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                        <h4 class="text-danger"><i class="fa fa-exclamation-triangle"></i> Errors</h4> 
+                        <ul>
+                          <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+                        </ul>
+                      </div>
+                      <form 
+                        class="form-horizontal m-t-20"
+                        method="POST">
                           <div class="form-group row ">
                               <div class="col-12 ">
                                   <input class="form-control form-control-lg" 
@@ -52,14 +58,19 @@
                           <div class="form-group row">
                               <div class="col-md-12 ">
                                   <div class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                      <input 
+                                        type="checkbox" 
+                                        class="custom-control-input" 
+                                        id="customCheck1"
+                                        v-model="statusAgree">
                                       <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label>
                                   </div>
                               </div>
                           </div>
                           <div class="form-group text-center ">
                               <div class="col-xs-12 p-b-20 ">
-                                  <button class="btn btn-block btn-lg btn-info " 
+                                  <button class="btn btn-block btn-lg btn-info "
+                                    :disabled="!statusAgree" 
                                     type="submit "
                                     @click.prevent="register">SIGN UP</button>
                               </div>
@@ -78,9 +89,6 @@
           </div>
       </div>
   </div>
-  <!-- ============================================================== -->
-  <!-- Login box.scss -->
-  <!-- ============================================================== -->
 </template>
 
 <script>
@@ -95,19 +103,40 @@ export default {
       nameUser: '',
       emailUser: '',
       password: '',
-      rpassword: ''
+      rpassword: '',
+      errors: [],
+      statusAgree: false
     };
   },
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
+    checkForm () {
+      this.errors = []
+      if (!this.nameUser) this.errors.push('Vui lòng nhập tên của bạn.')
+      if (!this.emailUser) this.errors.push('Vui lòng nhập email của bạn.')
+      else if (!this.validateEmail(this.emailUser)) this.errors.push('Email không đúng định dạng!')
+      if (!this.password && !this.rpassword) this.errors.push('Vui lòng nhập mật khảu của bạn')
+      else if (this.password != this.rpassword) this.errors.push('Mật khẩu không trùng nhau. Vui lòng nhập lại!')
+      console.log(this.errors)
     },
-    async register() {
-      const response = await AuthenticationService.register({
-        nameUser: this.nameUser,
-        emailUser: this.emailUser,
-        password: this.password
-      });
+    validateEmail (email) {
+      const regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regularExpression.test(email);
+    },
+    async register () {
+      try {
+        const response = await AuthenticationService.register({
+          nameUser: this.nameUser,
+          emailUser: this.emailUser,
+          password: this.password
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'dashboard'
+        })
+      } catch (error) {
+        this.errors.push(error.response.data)
+      }
     }
   }
 };

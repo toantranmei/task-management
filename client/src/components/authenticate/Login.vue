@@ -9,6 +9,7 @@
                 <!-- Form -->
                 <div class="row">
                     <div class="col-12">
+                        <div class="alert alert-danger" v-if="error" v-html="error" />
                         <form class="form-horizontal m-t-20" id="loginform">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -31,15 +32,6 @@
                                   aria-label="Password" 
                                   aria-describedby="basic-addon1"
                                   v-model="password">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                        <a href="javascript:void(0)" id="to-recover" class="text-dark float-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
-                                    </div>
-                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <div class="col-xs-12 p-b-20">
@@ -64,30 +56,6 @@
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-            <div id="recoverform">
-                <div class="logo">
-                    <span class="db"><img :src="images.headerform" alt="logo" /></span>
-                    <h5 class="font-medium m-b-20">Recover Password</h5>
-                    <span>Enter your Email and instructions will be sent to you!</span>
-                </div>
-                <div class="row m-t-20">
-                    <!-- Form -->
-                    <form class="col-12" action="index.html">
-                        <!-- email -->
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <input class="form-control form-control-lg" type="email" required="" placeholder="Username">
-                            </div>
-                        </div>
-                        <!-- pwd -->
-                        <div class="row m-t-20">
-                            <div class="col-12">
-                                <button class="btn btn-block btn-lg btn-danger" type="submit" name="action">Reset</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -117,8 +85,12 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'dashboard'
+        })
+        
       } catch (error) {
-        this.error = error.response.data.message
+        this.error = error.response.data.error
       }
     }    
   }
