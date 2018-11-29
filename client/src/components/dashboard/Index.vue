@@ -1,13 +1,9 @@
 <template>
-  <div class="container-fluid">
-    <router-view/>
-    <!-- <h1>Homepage</h1> -->
-  </div>
+	<div class="container-fluid"><router-view /></div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style>
-</style>
+<style></style>

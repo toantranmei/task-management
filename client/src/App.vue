@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <pre-loader />
     <div id="main-wrapper">
       <topbar v-if="!hide" /> <sidebar v-if="!hide" />
       <div v-bind:class="!hide ? 'page-wrapper' : ''">
@@ -41,4 +42,6 @@ export default {
   created() {}
 };
 </script>
-<style></style>
+<style>
+@import "./assets/css/style.css";
+</style>

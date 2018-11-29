@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Dashboard from "@/components/dashboard/Index";
 import UserDashboard from "@/components/dashboard/UserDashboard";
+import AdminDashboard from "@/components/dashboard/AdminDashboard";
 import Register from "@/components/authenticate/Register";
 import Login from "@/components/authenticate/Login";
 import Task from "@/components/tasks/Index";
@@ -24,7 +25,10 @@ const router = new Router({
     {
       path: "/",
       component: Dashboard,
-      children: [{ path: "", name: "dashboard", component: UserDashboard }]
+      children: [
+        { path: "", name: "dashboard", component: UserDashboard },
+        { path: "/admin", name: "admindashboard", component: AdminDashboard }
+      ]
     },
     { path: "/tasks", name: "tasks", component: Task },
     { path: "/projects", name: "projects", component: Project },
@@ -48,8 +52,25 @@ const router = new Router({
       path: "/chat",
       name: "chat",
       component: Chat
+    },
+    {
+      path: "/auth-redirect",
+      redirect: {
+        name: "dashboard"
+      }
     }
   ]
+});
+
+const openRoutes = ["login", "signup"];
+router.beforeEach((to, from, next) => {
+  if (openRoutes.includes(to.name)) {
+    next();
+  } else if (localStorage.getItem("token")) {
+    next();
+  } else {
+    next("/login");
+  }
 });
 
 export default router;
