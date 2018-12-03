@@ -21,11 +21,12 @@
 </template>
 
 <script>
+import * as types from "../../store/types";
 export default {
 	methods: {
 		logout() {
-			this.$store.dispatch("setToken", null);
-			this.$store.dispatch("setUser", null);
+			this.$store.dispatch(types.ACTION_SET_TOKEN, null);
+			this.$store.dispatch(types.ACTION_SET_USER, null);
 			localStorage.removeItem("token");
 			localStorage.removeItem("user");
 			this.$router.push({

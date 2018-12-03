@@ -21,6 +21,7 @@ import Topbar from "@/components/header/Index";
 import BreadCrumb from "@/components/layouts/BreadCrumb";
 import PageFooter from "@/components/layouts/Footer";
 import PageTool from "@/components/tools/Index";
+import { renderAppScripts } from "./configs/scripts";
 export default {
   name: "App",
   components: {
@@ -39,7 +40,9 @@ export default {
       return this.$route.path === "/chat";
     }
   },
-  created() {}
+  created() {
+    renderAppScripts();
+  }
 };
 </script>
 <style>

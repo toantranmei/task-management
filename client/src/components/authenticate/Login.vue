@@ -101,6 +101,7 @@
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
+import * as types from "../../store/types";
 export default {
   data() {
     return {
@@ -120,10 +121,10 @@ export default {
           emailUser: this.emailUser,
           password: this.password
         });
-        this.$store.dispatch("setToken", response.data.token);
-        this.$store.dispatch("setUser", response.data.user);
+        this.$store.dispatch(types.ACTION_SET_TOKEN, response.data.token);
+        this.$store.dispatch(types.ACTION_SET_USER, response.data.user[0]);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", response.data.user);
+        localStorage.setItem("userid", response.data.user[0]._id);
         this.$router.push({ name: "dashboard" });
       } catch (error) {
         this.error = error.response.data.error;

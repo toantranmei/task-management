@@ -1,37 +1,23 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
+// Import all moudles in modules folder
+import user from "./modules/user";
+// Import partials file in store folder
+import * as actions from "./actions";
+import * as getters from "./getters";
+import * as mutations from "./mutations";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+const namespaced = true;
 
 export default new Vuex.Store({
-  strict: true,
-  state: {
-    token: null,
-    user: null,
-    isUserLoggedIn: false
-  },
-  mutations: {
-    setToken (state, token) {
-      state.token = token
-      if (token) {
-        state.isUserLoggedIn = true
-      } else {
-        state.isUserLoggedIn = false
-      }
-    },
-    setUser (state, user) {
-      state.user = user
-    }
-  },
-  actions: {
-    setToken ({commit}, token) {
-      commit('setToken', token)
-    },
-    setUser ({commit}, user) {
-      commit('setUser', user)
-    }
-  },
-  getters: {
-    isUserLoggedIn: state => state.isUserLoggedIn
-  }
-})
+	namespaced,
+	state: {},
+	getters,
+	mutations,
+	actions,
+	modules: {
+		user
+	}
+});

@@ -3,7 +3,13 @@
 </template>
 
 <script>
-export default {};
+import { renderCustomScripts, renderAppScripts } from "../../configs/scripts";
+export default {
+	created() {
+		renderAppScripts();
+		renderCustomScripts();
+	}
+};
 </script>
 
 <style></style>

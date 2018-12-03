@@ -33,7 +33,7 @@ mongoose.connect(
  *Define Routes middleware, while pass data to client
  ****************************************************/
 app.use("/projects", projects);
-app.use("/users", users);
+app.use("/user", users);
 /***************************************************/
 
 // Catch 404 Errors and forward them to error handler

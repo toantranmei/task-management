@@ -64,7 +64,7 @@
 							class="btn btn-block btn-success"
 							@click="update"
 						>
-							<i class="fa fa-check"></i> Create A Project
+							<i class="fa fa-check"></i> Update Project
 						</button>
 						<button
 							type="button"
