@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const config = require("./configs/config");
 const projects = require("./routes/project.route");
 const users = require("./routes/user.route");
+const boards = require("./routes/board.route");
 
 const app = express();
 app.use(morgan("tiny"));
@@ -34,6 +35,7 @@ mongoose.connect(
  ****************************************************/
 app.use("/projects", projects);
 app.use("/user", users);
+app.use("/boards", boards);
 /***************************************************/
 
 // Catch 404 Errors and forward them to error handler

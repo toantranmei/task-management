@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 // Import all moudles in modules folder
 import user from "./modules/user";
+import board from './modules/board'
 // Import partials file in store folder
 import * as actions from "./actions";
 import * as getters from "./getters";
@@ -18,6 +19,7 @@ export default new Vuex.Store({
 	mutations,
 	actions,
 	modules: {
-		user
+		user,
+		board
 	}
 });

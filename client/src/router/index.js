@@ -6,6 +6,8 @@ import AdminDashboard from "@/components/dashboard/AdminDashboard";
 import Register from "@/components/authenticate/Register";
 import Login from "@/components/authenticate/Login";
 import Task from "@/components/tasks/Index";
+import BoardTask from "@/components/tasks/BoardTask";
+import BoardView from "@/components/tasks/BoardView";
 import Project from "@/components/projects/Index";
 import ViewProject from "@/components/projects/ViewProject";
 import EditProject from "@/components/projects/EditProject";
@@ -30,7 +32,14 @@ const router = new Router({
         { path: "/admin", name: "admindashboard", component: AdminDashboard }
       ]
     },
-    { path: "/tasks", name: "tasks", component: Task },
+    {
+      path: "/tasks",
+      component: Task,
+      children: [
+        { path: "", name: "tasks", component: BoardTask },
+        { path: "board/:boardId", name: "boardview", component: BoardView }
+      ]
+    },
     { path: "/projects", name: "projects", component: Project },
     { path: "/projects/:projectId", name: "project", component: ViewProject },
     {

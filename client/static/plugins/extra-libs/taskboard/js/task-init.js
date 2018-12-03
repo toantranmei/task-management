@@ -196,7 +196,7 @@ $(function() {
     $("#todo-lists-demo-controls").lobiList({
       lists: [
         {
-          title: "Todo",
+          title: "Công việc",
           defaultStyle: "lobilist-info",
           items: [
             {
@@ -204,6 +204,18 @@ $(function() {
               description: "Thunder fulfilled travellers folly, wading, lake.",
               dueDate: "2018-12-12"
             }
+          ]
+        },
+        {
+          title: "Đang làm",
+          defaultStyle: "lobilist-warning",
+          items: [
+          ]
+        },
+        {
+          title: "Hoàn thành",
+          defaultStyle: "lobilist-danger",
+          items: [
           ]
         }
       ]

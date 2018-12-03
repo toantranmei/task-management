@@ -12,6 +12,10 @@ const UserSchema = new Schema({
   password: String,
   imageUser: String,
   status: Number,
+  _boards: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Board'
+  }],
   _roles: {
     type: Schema.Types.ObjectId,
     ref: 'Role'

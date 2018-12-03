@@ -107,6 +107,7 @@ export default {
 		async update() {
 			const projectId = this.$store.state.route.params.projectId;
 			try {
+				console.log(this.project._id);
 				await ProjectService.update(this.project);
 				this.$router.push({
 					name: "project",
