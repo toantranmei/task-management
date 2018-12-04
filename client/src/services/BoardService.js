@@ -12,5 +12,11 @@ export default {
 	},
 	update(board) {
 		return Api().patch(`boards/${board._id}/board`, board);
+	},
+	getAllTask(boardId) {
+		return Api().get(`boards/${boardId}/tasks`);
+	},
+	addTask(boardId, task) {
+		return Api().post(`boards/${boardId}/tasks`, task)
 	}
 };

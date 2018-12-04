@@ -9,18 +9,16 @@ const TaskSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Project'
   },
+  _board: {
+    type: Schema.Types.ObjectId,
+    ref: 'Board'
+  },
   _createBy: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  },
-  create_at: {
-    type: Date,
-    default: Date.now
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now
   }
+}, {
+  timestamps: true
 })
 
 const Task = mongoose.model('Task', TaskSchema)

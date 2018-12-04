@@ -10,5 +10,9 @@ router
 	.route("/:boardId/board")
 	.get(BoardController.getInfoBoard)
 	.patch(BoardController.updateInfoBoard);
+router
+	.route("/:boardId/tasks")
+	.get(BoardController.getAllTaskByBoard)
+	.post(BoardController.addTaskByBoard)
 
 module.exports = router;

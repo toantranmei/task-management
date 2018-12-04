@@ -28,5 +28,20 @@ module.exports = {
 		const newBoard = req.body;
 		await Board.findByIdAndUpdate(boardId, newBoard);
 		res.status(200).json(newBoard);
-	}
+  },
+  getAllTaskByBoard: async (req, res, next) => {
+    const { boardId } = req.params;
+    const tasks = await Board.findById(boardId).populate('_tasks');
+    res.status(200).json(tasks._tasks);
+  },
+  addTaskByBoard: async (req, res, next) => {
+    const { boardId } = req.params;
+    const newTask = new Task(req.body);
+    const board = await Board.findById(boardId);
+    newTask.board = board;
+    await newTask.save();
+    board._tasks.push(newTask);
+    await board.save();
+    res.status(201).json(newTask);
+  }
 };

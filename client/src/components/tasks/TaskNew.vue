@@ -8,12 +8,30 @@
 				type="text"
 				class="form-control mb-3"
 				placeholder="Công việc bạn muốn làm là..."
+        v-model="task.nameTask"
 			/>
-			<button class="btn btn-block btn-warning">Thêm công việc</button>
+			<button class="btn btn-block btn-warning" @click="save">Thêm công việc</button>
 		</div>
 	</div>
 </template>
 
-<script></script>
+<script>
+import * as types from '../../store/types'
+export default {
+  data () {
+    return {
+      task: {
+        nameTask: ''
+      }
+    }
+  },
+	methods: {
+		save() {
+      const boardId = this.$store.state.route.params.boardId;
+      this.$store.dispatch(types.ACTION_ADD_TASK, boardId, this.task)
+    }
+	}
+}
+</script>
 
 <style></style>
